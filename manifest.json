@@ -1,7 +1,7 @@
 {
 	"name": "Dark platform",
 	"description": "Un'estensione che rende platform un po' diverso",
-	"version": "1.0",
+	"version": "1.0.1",
 	"manifest_version": 3,
 	"icons": {
 	"48": "/assets/icons/48.png",
