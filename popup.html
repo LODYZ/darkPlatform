@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+	<link rel="stylesheet" href="popup.css">
+  </head>
+  <body>
+  <div class="container-md">
+	<h1>Dark Platform</h1>
+	
+	<div class="d-grid gap-2">
+		<div class="form-floating">
+			<select class="form-select" id="temaEditor">
+			  <option selected>Prova</option>
+			  <option value="aceTomorrowNight">Tomorrow Night</option>
+			  <option value="aceTomorrowNightBlue">Tomorrow Night Blue</option>
+			  <option value="3">Three</option>
+			</select>
+			<label for="floatingSelect">Tema editor</label>
+		</div>
+		<div class="form-check form-switch form-check-reverse">
+		  <input class="form-check-input" type="checkbox" id="platBot">
+		  <label class="form-check-label" for="platBot">Nascondi PlatBot</label>
+		</div>
+		<button type="button" id="notify-button" class="btn btn-primary">Attiva</button>
+		<button type="button" id="notify-reset" class="btn btn-secondary">Disattiva</button>		
+	</div>
+	<span id='appVersion'></span>
+  </div>
+   <script src="assets/js/popup.js"></script>
+  </body>
+</html>
