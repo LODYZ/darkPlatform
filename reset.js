@@ -6,8 +6,8 @@ try{
 	}
 	
 	if(document.getElementsByClassName('x-tip-tooltip-hint').length>0){
-		document.getElementsByClassName('x-tip-tooltip-hint')[0].style.display!='' ? delete document.getElementsByClassName('x-tip-tooltip-hint')[0].style.removeProperty("display") : null;
-		document.getElementsByClassName('x-shadow')[0].style.display!='' ? delete document.getElementsByClassName('x-shadow')[0].style.removeProperty("display") : null;
+		document.getElementsByClassName('x-tip-tooltip-hint')[0].style.display!='' ? document.getElementsByClassName('x-tip-tooltip-hint')[0].style.removeProperty("display") : null;
+		document.getElementsByClassName('x-shadow')[0].style.display!='' ? document.getElementsByClassName('x-shadow')[0].style.removeProperty("display") : null;
 	}
 	
 }catch(e){

@@ -76,8 +76,8 @@ try{
 					document.getElementsByClassName('x-tip-tooltip-hint')[0].style.display='none';
 					document.getElementsByClassName('x-shadow')[0].style.display='none';
 				}else{
-					document.getElementsByClassName('x-tip-tooltip-hint')[0].style.display!='' ? delete document.getElementsByClassName('x-tip-tooltip-hint')[0].style.removeProperty("display") : null;
-					document.getElementsByClassName('x-shadow')[0].style.display!='' ? delete document.getElementsByClassName('x-shadow')[0].style.removeProperty("display") : null;
+					document.getElementsByClassName('x-tip-tooltip-hint')[0].style.display!='' ? document.getElementsByClassName('x-tip-tooltip-hint')[0].style.removeProperty("display") : null;
+					document.getElementsByClassName('x-shadow')[0].style.display!='' ? document.getElementsByClassName('x-shadow')[0].style.removeProperty("display") : null;
 				 }	
 			} 
 		});
