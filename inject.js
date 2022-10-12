@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-//se arriva il messaggio vuol dire che sono nel designer
-chrome.runtime.sendMessage({ oneMenager: true });
-=======
 function getLanguagesIds(){
 	var lingue=document.getElementById('translations').getElementsByClassName('x-grid3-header')[0].getElementsByTagName('td');
 	var languagesMap={}
@@ -39,4 +35,3 @@ chrome.runtime.onMessage.addListener(
 	}
   }
 );
->>>>>>> f756f78 (V1.1.1)
