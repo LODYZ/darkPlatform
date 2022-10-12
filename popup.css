@@ -1,4 +1,23 @@
+<<<<<<< HEAD
 body{
 width:300px;
 height:400px;
+=======
+body{
+width:300px;
+height:450px;
+}
+
+p#appVersion {
+    padding-right: calc(var(--bs-gutter-x) * .5);
+}
+
+.vertical-align {
+    display: flex;
+    align-items: center;
+}
+
+#extensionDisabled{
+	max-height: 450px;
+>>>>>>> f756f78 (V1.1.1)
 }

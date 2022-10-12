@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
 	"name": "Dark platform",
 	"description": "Un'estensione che rende platform un po' diverso",
@@ -37,3 +38,47 @@
 		"service_worker": "background.js"
 	  }
 }
+=======
+{
+	"name": "Dark platform",
+	"description": "Un'estensione che rende platform un po' diverso",
+	"version": "1.1.1",
+	"manifest_version": 3,
+	"icons": {
+		"48": "/assets/icons/48.png",
+		"128": "/assets/icons/128.png"
+	},
+	"permissions":[
+		"tabs",
+		"activeTab",
+		"scripting",
+		"storage"
+	],
+	"action": {
+	  "default_popup": "popup.html",
+	  "default_icon": {
+		  "48": "/assets/icons/48.png",
+		  "128": "/assets/icons/128.png"
+	  }
+	},
+	"web_accessible_resources": [
+		{
+		  "resources": [ "customCSS.css", "/aceCss/*"  ],
+		  "matches": ["*://*.google.com/*", "*://*/*" ]
+		}
+	],
+	"content_scripts": [
+		{
+			"matches": ["*://*/*/4ws/main_designer*"],
+			"js": ["inject.js"]
+		}
+	],
+	"background": {
+		"service_worker": "background.js"
+	  },
+	"host_permissions": [
+        "https://raw.githubusercontent.com/LODYZ/darkPlatform/*",
+		"https://cdn3.emoji.gg/*"
+    ]
+}
+>>>>>>> f756f78 (V1.1.1)
