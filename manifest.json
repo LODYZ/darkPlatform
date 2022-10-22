@@ -1,7 +1,7 @@
 {
 	"name": "Dark platform",
 	"description": "Un'estensione che rende platform un po' diverso",
-	"version": "1.1.1",
+	"version": "1.1.2",
 	"manifest_version": 3,
 	"icons": {
 		"48": "/assets/icons/48.png",
@@ -22,13 +22,13 @@
 	},
 	"web_accessible_resources": [
 		{
-		  "resources": [ "customCSS.css", "/aceCss/*"  ],
+		  "resources": [ "customCSS.css", "/aceCss/*", "/jsonEditor/vanilla-jsoneditor/*"  ],
 		  "matches": ["*://*.google.com/*", "*://*/*" ]
 		}
 	],
 	"content_scripts": [
 		{
-			"matches": ["*://*/*/4ws/main_designer*"],
+			"matches": ["<all_urls>"],
 			"js": ["inject.js"]
 		}
 	],

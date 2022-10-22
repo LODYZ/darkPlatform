@@ -1,0 +1,110 @@
+.ace-eclipse .ace_gutter {
+    background: #1a1a1a;
+    color: #BEBEBE
+}
+
+.ace-eclipse .ace_print-margin {
+    width: 1px;
+    background: #1a1a1a
+}
+
+.ace-eclipse {
+    background-color: #0F0F0F;
+    color: #FFFFFF
+}
+
+.ace-eclipse .ace_cursor {
+    color: #FFFFFF
+}
+
+.ace-eclipse .ace_marker-layer .ace_selection {
+    background: #6699CC
+}
+
+.ace-eclipse.ace_multiselect .ace_selection.ace_start {
+    box-shadow: 0 0 3px 0px #0F0F0F;
+    border-radius: 2px
+}
+
+.ace-eclipse .ace_marker-layer .ace_step {
+    background: rgb(102, 82, 0)
+}
+
+.ace-eclipse .ace_marker-layer .ace_bracket {
+    margin: -1px 0 0 -1px;
+    border: 1px solid #404040
+}
+
+.ace-eclipse .ace_marker-layer .ace_active-line {
+    background: #333333
+}
+
+.ace-eclipse .ace_gutter-active-line {
+    background-color: #333333
+}
+
+.ace-eclipse .ace_marker-layer .ace_selected-word {
+    border: 1px solid #6699CC
+}
+
+.ace-eclipse .ace_invisible {
+    color: #404040
+}
+
+.ace-eclipse .ace_keyword,
+.ace-eclipse .ace_meta {
+    color: #FF6600
+}
+
+.ace-eclipse .ace_constant,
+.ace-eclipse .ace_constant.ace_character,
+.ace-eclipse .ace_constant.ace_character.ace_escape,
+.ace-eclipse .ace_constant.ace_other {
+    color: #339999
+}
+
+.ace-eclipse .ace_constant.ace_numeric {
+    color: #99CC99
+}
+
+.ace-eclipse .ace_invalid,
+.ace-eclipse .ace_invalid.ace_deprecated {
+    color: #CCFF33;
+    background-color: #000000
+}
+
+.ace-eclipse .ace_fold {
+    background-color: #FFCC00;
+    border-color: #FFFFFF
+}
+
+.ace-eclipse .ace_entity.ace_name.ace_function,
+.ace-eclipse .ace_support.ace_function,
+.ace-eclipse .ace_variable {
+    color: #FFCC00
+}
+
+.ace-eclipse .ace_variable.ace_parameter {
+    font-style: italic
+}
+
+.ace-eclipse .ace_string {
+    color: #66FF00
+}
+
+.ace-eclipse .ace_string.ace_regexp {
+    color: #44B4CC
+}
+
+.ace-eclipse .ace_comment {
+    color: #9933CC
+}
+
+.ace-eclipse .ace_entity.ace_other.ace_attribute-name {
+    font-style: italic;
+    color: #99CC99
+}
+
+.ace-eclipse .ace_indent-guide {
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAAEklEQVQImWNgYGBgYNDTc/oPAALPAZ7hxlbYAAAAAElFTkSuQmCC) right repeat-y
+}

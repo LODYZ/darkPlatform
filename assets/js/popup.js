@@ -188,6 +188,12 @@ clonaTraduzioni.addEventListener( 'click',  () => {
 
 
 
+//Gestione presione bottone JSONEditor
+document.getElementById('jsonAccordion').addEventListener( 'click',  () => {
+	chrome.tabs.create({url:chrome.runtime.getURL('website/jsonEditor.html')});
+} );
+
+
 
 //Imposto la versione dell'app
 var versioneAttiva=chrome.runtime.getManifest().version;
