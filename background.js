@@ -33,6 +33,78 @@ chrome.runtime.onMessage.addListener(
         }});
       }
 
+    }else if('notify'){
+       chrome.notifications.create(
+        'updateNotify',
+        {
+            type:'basic',
+            iconUrl:'/assets/icons/48.png',
+            title: 'Aggiornamento disponibile',
+            message:'Ciao, è disponibile una nuova versione di DarkPlatform. Premimi per aggiornarmi'
+        }
+      )
     }
   return true;
 });
+
+
+
+
+/**Verifica configurazioni
+ * Il seguente codice si occupa di controllare se sono presenti le configurazioni di default dell'estensione
+ * In questo modo possiamo specificare i comportamenti di default quando l'utente ha installato l'estensione e non ancora specificato le proprie preferenze
+ */
+
+ chrome.storage.sync.get(null, (result) => {
+  //console.log(JSON.stringify(result));
+  chrome.storage.sync.set(
+    {
+    'hints': result.hints ? result.hints : true,
+    'platBot': result.platBot ? result.platBot : true,
+    'editorTema': result.editorTema ? result.editorTema : "aceTomorrowNight",
+    'fontSizeEditor': result.fontSizeEditor ? result.fontSizeEditor : "12",
+    'notificheAbilitate': result.notificheAbilitate ? result.notificheAbilitate : true,
+    'notificheGiorniReminder': result.notificheGiorniReminder ? result.notificheGiorniReminder : "7",
+    "firstKeyJsonEditor": result.firstKeyJsonEditor ? result.firstKeyJsonEditor : JSON.stringify({
+        "key": "Control",
+        "keyCode": 17,
+        "which": 17,
+        "code": "ControlLeft"
+    }),
+    "secondKeyJsonEditor": result.secondKeyJsonEditor ? result.secondKeyJsonEditor : JSON.stringify({
+        "key": "q",
+        "keyCode": 81,
+        "which": 81,
+        "code": "KeyQ"
+    })
+    
+}, function() {});
+
+});
+
+
+//Codice che apre il changelog quando viene aggiornata l'estensione
+chrome.storage.local.get(['latestChangeLogShown'], (result) => {
+  //console.log(JSON.stringify(result));
+  console.log(result);
+  result.latestChangeLogShown = result.latestChangeLogShown ? result.latestChangeLogShown : '1.0.0';
+  if(chrome.runtime.getManifest().version>result.latestChangeLogShown){
+    chrome.tabs.create({url:chrome.runtime.getURL('website/guida.html')});
+    chrome.storage.local.set(
+      {
+      'latestChangeLogShown': chrome.runtime.getManifest().version
+      }, function() {});
+  }
+
+});
+
+
+
+//Se l'utente preme sulla notifica viene riportato a github
+chrome.notifications.onClicked.addListener(
+  function(id){
+    if(id=='updateNotify'){
+        chrome.tabs.create({url:'https://github.com/LODYZ/darkPlatform'});
+    }
+}
+)

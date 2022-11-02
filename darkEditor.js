@@ -50,6 +50,26 @@ try{
 	}else{
 		console.log('darkMode platform già attiva');
 	}
+
+	//Controllo se il css personalizzato dell'utente è attivo
+	if(document.getElementById('userCSS')==null){
+		try{
+			chrome.storage.local.get(['userCSS'], function(result) {
+				if(result.userCSS != undefined && result.userCSS.length>0) { //Se l'utente non ha specificato del css, tanto vale non metterlo
+					var style = document.createElement("style");
+					style.id = "userCSS";
+					style.innerText=result.userCSS;		
+					(document.head).after(style);
+					console.log('fatto');	 
+				}
+			});
+		}catch(e){
+			console.log(e);
+		}	
+	}else{
+		console.log('userCSS già attivo');
+	}
+
 	
 	//Attivo o disattivo platBot
 	try{

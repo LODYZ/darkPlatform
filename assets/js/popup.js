@@ -193,6 +193,11 @@ document.getElementById('jsonAccordion').addEventListener( 'click',  () => {
 	chrome.tabs.create({url:chrome.runtime.getURL('website/jsonEditor.html')});
 } );
 
+//Gestione presione bottone Impostazioni
+document.getElementById('impostazioni').addEventListener( 'click',  () => {
+	chrome.tabs.create({url:chrome.runtime.getURL('website/settings.html')});
+} );
+
 
 
 //Imposto la versione dell'app
@@ -207,6 +212,7 @@ fetch('https://raw.githubusercontent.com/LODYZ/darkPlatform/main/manifest.json')
 		updateLink.addEventListener( 'click',  () => {
 			chrome.tabs.create({url:'https://github.com/LODYZ/darkPlatform'});
 		} );
+
 	}else{
 		document.getElementById('appVersion').innerHTML='V '+versioneAttiva;
 	}

@@ -1,3 +1,10 @@
+/**
+ * ATTENZIONE, nella parte finale dello script è presente il controllo del tema attivo e vengono effettuati i controlli sugli aggiornamenti
+ * 
+ */
+
+
+
 /*function getLanguagesIds(){
 	var lingue=document.getElementById('translations').getElementsByClassName('x-grid3-header')[0].getElementsByTagName('td');
 	var languagesMap={}
@@ -163,20 +170,63 @@ loadEditor().then(
 				}
 			)
 		
-		//Se l'utente premere CTRL+Q si apre l'editor con già importato il testo selezionato
-		document.body.addEventListener("keydown",function(e){
-			e = e || window.event;
-			var key = e.which || e.keyCode; // keyCode detection
-			var ctrl = e.ctrlKey ? e.ctrlKey : ((key === 17) ? true : false); // shift detection
-		
-			if ( key == 81 && ctrl ) {
-				if(document.getSelection().toString().length>0){
-					editor.set({text:document.getSelection().toString()});
-					modalDialog.showDialog();
+
+		chrome.storage.sync.get(
+			['firstKeyJsonEditor','secondKeyJsonEditor'], function(result) {
+				if(Object.keys(result).length==2){
+					result.firstKeyJsonEditor=JSON.parse(result.firstKeyJsonEditor);
+					result.secondKeyJsonEditor=JSON.parse(result.secondKeyJsonEditor);
+					
+					var keysPressed = {};
+
+					document.body.addEventListener("keydown",function(e){
+						//console.log(JSON.stringify(keysPressed));
+						e = e || window.event;
+						var tasto=e.code || e.which || e.keyCode;
+						var tasto=e.code || e.which || e.keyCode;
+						if(tasto== result.firstKeyJsonEditor.code ||
+							tasto== result.firstKeyJsonEditor.which ||
+							tasto== result.firstKeyJsonEditor.keyCode){
+								keysPressed[tasto]=true;
+							}
+
+						if((tasto== result.secondKeyJsonEditor.code ||
+							tasto== result.secondKeyJsonEditor.which ||
+							tasto== result.secondKeyJsonEditor.keyCode) &&
+							(keysPressed[result.firstKeyJsonEditor.code] ||
+								keysPressed[result.firstKeyJsonEditor.which] ||
+								keysPressed[result.firstKeyJsonEditor.keyCode])){
+									if(document.getSelection().toString().length>0){
+										editor.set({text:document.getSelection().toString()});
+										modalDialog.showDialog();
+									}								
+								}
+								//console.log(JSON.stringify(keysPressed));
+					},false);
+
+					document.body.addEventListener('keyup', (e) => {
+						var tasto=e.code || e.which || e.keyCode;
+						delete keysPressed[tasto];
+					 });
+
+
+				}else{//Configurazioni non trovate, uso quelle di default
+					//Se l'utente premere CTRL+Q si apre l'editor con già importato il testo selezionato
+					document.body.addEventListener("keydown",function(e){
+						e = e || window.event;
+						var key = e.which || e.keyCode; // keyCode detection
+						var ctrl = e.ctrlKey ? e.ctrlKey : ((key === 17) ? true : false); // shift detection
+					
+						if ( key == 81 && ctrl ) {
+							if(document.getSelection().toString().length>0){
+								editor.set({text:document.getSelection().toString()});
+								modalDialog.showDialog();
+							}
+						}
+					
+					},false);
 				}
-			}
-		
-		},false);
+			});
 	});
 
 
@@ -796,9 +846,9 @@ loadEditor().then(
 
 
 
-	/**
-	 * Cambio icon dinamicamente sulla base del tema!
-	 */
+/**
+ * Cambio icon dinamicamente sulla base del tema!
+ */
 
 
 if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches){
@@ -827,3 +877,87 @@ window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', e 
 		}
 	);
 });
+
+
+
+/**
+ * Controllo aggiornamenti
+ */
+
+//Mi serve per controllare quando ho cercato gli aggiornamenti
+ function diff_hours(dt2, dt1) {
+	var diff =(dt2.getTime() - dt1.getTime()) / 1000;
+	diff /= (60 * 60);
+	return Math.abs(Math.round(diff));
+ }
+
+ Date.prototype.addDays = function(days) {
+    var date = new Date(this.valueOf());
+    date.setDate(date.getDate() + days);
+    return date;
+}
+
+//Verifico se l'utente ha abilitato le notifiche (se non le ha abilitate tanto vale non fare nulla)
+chrome.storage.sync.get(['notificheAbilitate', 'notificheGiorniReminder' ], (result) => {
+	if(result.notificheAbilitate){
+		chrome.storage.local.get(['lastUpdateCheck', 'lastNotifiedVersion', 'dateVersionDetected'], async (resultLocal) => {
+			if(resultLocal.lastUpdateCheck){ //Mi dice quando è stato fatto l'ultimo controllo
+				console.log(diff_hours(new Date(resultLocal.lastUpdateCheck), new Date()));
+				if(diff_hours(new Date(resultLocal.lastUpdateCheck), new Date())>=6){ //Controlliamo se ci sono aggiornamenti ogni 6 ore
+					//E'da almeno 6 ore che non cerco aggiornamenti, lo faccio
+					var versioneAttiva=chrome.runtime.getManifest().version;
+					//versioneAttiva=versioneAttiva.replace('2','1'); //Togliere
+					var versioneRilevata= await checkUpdate();
+					if(versioneAttiva<versioneRilevata){
+						//E' disponibile un aggiornamento, controllo se già lo conoscevo e quando è che lo ho trovato
+						if(versioneRilevata ==resultLocal.lastNotifiedVersion){
+							//Lo conoscevo già, controllo se posso mandare la notifica all'utente oppure se sono passati troppi giorni
+							if(new Date(resultLocal.dateVersionDetected).addDays(result.notificheGiorniReminder)>=new Date()){
+								//Invio la notifica all'utente
+								chrome.runtime.sendMessage(
+									{
+										action:'notify',
+									}
+								);
+							}
+						}else{
+							//nuovo update, aggiorno le variabili e notifico
+							chrome.storage.local.set(
+								{
+								'lastNotifiedVersion': versioneRilevata,
+								'dateVersionDetected':new Date().toISOString()
+
+							}, function() {});
+							chrome.runtime.sendMessage(
+								{
+									action:'notify',
+								}
+							);
+						}
+
+					}
+				}
+				
+			}else{
+				//Controllo se ci sono aggiornamenti e aggiorno la variabile dell'ultimo controllo (l'utente non ha mai verificato se ci fossero update)
+				checkUpdate();
+			}
+		  
+		  });
+	}
+  });
+
+
+  //Funzione che restituisce l'ultima versione disponibile dell'estensione e aggiorna la variabile locale che indica che l'ultima volta in cui è stato fatto l'update
+  async function checkUpdate(){
+	return fetch('https://raw.githubusercontent.com/LODYZ/darkPlatform/main/manifest.json').then(r => r.text()).then(result => {
+		chrome.storage.local.set(
+			{
+			'lastUpdateCheck': new Date().toISOString()		
+		}, function() {});
+	  return JSON.parse(result).version;
+	})
+  }
+
+
+

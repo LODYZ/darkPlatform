@@ -33,7 +33,8 @@ label, button, .x-accordion-hd{
 .x-window-bwrap,
 .x-resizable-pinned .x-window-bc, .x-resizable-pinned .x-window-bl, .x-resizable-pinned .x-window-br, .x-resizable-pinned .x-window-mc, .x-resizable-pinned .x-window-ml, .x-resizable-pinned .x-window-mr, .x-window-dlg .x-window-bc, .x-window-dlg .x-window-bl, .x-window-dlg .x-window-br, .x-window-dlg .x-window-mc, .x-window-dlg .x-window-ml, .x-window-dlg .x-window-mr,
 .x-resizable-pinned .x-window-bwrap .x-window-ml, .x-window-dlg .x-window-bwrap .x-window-ml,
-.x-plain-header{
+.x-plain-header,
+.x-abs-layout-item .x-panel-body{
    background-color:#202124 !important;
    color: lightgray;
 }
@@ -58,7 +59,12 @@ label, button, .x-accordion-hd{
 
 
 
-td, .x-tree-node, .x-tree-node a, .x-tree-node-expanded a.x-tree-node-anchor span, .x-tree-node-expanded + .x-tree-node-ct .x-tree-node-leaf a.x-tree-node-anchor span{
+td, 
+.x-tree-node, 
+.x-tree-node a, 
+.x-tree-node-expanded a.x-tree-node-anchor span, 
+.x-tree-node-expanded + .x-tree-node-ct .x-tree-node-leaf a.x-tree-node-anchor span,
+.x-item-disabled *{
    color:lightgray !important;
 }
 

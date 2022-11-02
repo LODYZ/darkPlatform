@@ -3,7 +3,11 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>@import '../jsonEditor/vanilla-jsoneditor/themes/jse-theme-dark.css';</style>
+    <style>
+    @import '../jsonEditor/vanilla-jsoneditor/themes/jse-theme-dark.css';
+    @import url('http://fonts.cdnfonts.com/css/adobe-clean');
+    @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css");
+    </style>
     <style>
       .fill-remaining{
        height: calc(100vh - 150px); 
@@ -16,7 +20,7 @@
     <header class="p-3 text-bg-dark">
       <div class="container">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-          <a href="#" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+          <a href="#" class="d-flex align-items-center mb-2 mb-lg-0  me-lg-auto text-white text-decoration-none">
             <svg id="Livello_1" data-name="Livello 1" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-bootstrap" viewBox="0 0 128 128" width="40" height="32">
               <defs>
                 <style>.cls-1{font-size:77px;font-family:AdobeClean-SemiCn, Adobe Clean;}.cls-2{letter-spacing:0em;}</style>
@@ -26,10 +30,12 @@
             </svg>
           </a>
   
-          <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-            <li><a href="#" class="nav-link px-2 text-secondary">JSON Editor</a></li>
-            <!-- <li><a href="#" class="nav-link px-2 text-white">Features</a></li>
-            <li><a href="#" class="nav-link px-2 text-white">Pricing</a></li>
+          <ul class="nav col-12 col-lg-auto mb-1 justify-content-center mb-md-0">
+            <li><a href="#" class="nav-link p-0 px-2 text-white"><i class=" bi d-block text-center bi-house-door" style="font-size: 1.5rem;"></i>Home</a></li>
+            <li><a href="#" class="nav-link p-0 px-2 text-secondary"><i class=" bi d-block text-center bi-braces" style="font-size: 1.5rem;"></i>JSON Editor</a></li>
+            <li><a href="./guida.html" class="nav-link p-0 px-2 text-white"><i class=" bi d-block text-center bi-question-circle" style="font-size: 1.5rem;"></i>Guida</a></li>
+            <li><a href="./settings.html" class="nav-link p-0 px-2 text-white"><i class=" bi d-block text-center bi-gear" style="font-size: 1.5rem;"></i>Impostazioni</a></li>
+            <!--
             <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
             <li><a href="#" class="nav-link px-2 text-white">About</a></li> -->
           </ul>
@@ -38,7 +44,7 @@
       </div>
     </header>
     <main class="flex-fill">
-      <div class="container-fluid text-center" >
+      <div class="container-fluid" >
         <div class="row">
           <div class="col">
             <div id="editorleft" class="jse-theme-dark fill-remaining"></div>
