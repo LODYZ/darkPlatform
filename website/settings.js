@@ -4,7 +4,7 @@ const platBot=document.getElementById('platBot');
 const hints=document.getElementById('hints');
 const editorTema=document.getElementById('temaEditor');
 const fontSizeEditor=document.getElementById('fontSizeEditor');
-
+const macroCommentoBloccoEditor=document.getElementById('macroCommentoBloccoEditor');
 //Input sezione notifiche
 const notificheAbilitate=document.getElementById('notificheAbilitate');
 const notificheGiorniReminder=document.getElementById('notificheGiorniReminder');
@@ -24,6 +24,10 @@ chrome.storage.sync.get(null, (result) => {
      }
      if(result.editorTema != undefined) { //Imposto la preferenza per il tema dell'editor
         editorTema.value=result.editorTema;
+     }
+
+     if(result.macroCommentoBloccoEditor != undefined) { //Imposto la preferenza per macroCommentoBloccoEditor
+        macroCommentoBloccoEditor.checked=result.macroCommentoBloccoEditor;
      }
 
      //Sezione notifiche
@@ -201,6 +205,7 @@ const saveSettings= function(section, data){
                 'platBot': platBot.checked,
                 'editorTema': editorTema.value,
                 'fontSizeEditor': fontSizeEditor.value,
+                'macroCommentoBloccoEditor':macroCommentoBloccoEditor.checked
             }, function() {});
             msg+=' Per rendere effettive le modifiche disattiva e riattiva la dark mode'
         }else if(section=='notification'){
@@ -238,4 +243,15 @@ function download(filename, text) {
   
     document.body.removeChild(element);
   }
-  
+
+
+
+
+  /**
+   * Inizializiamo i tooltip nella pagina (lo vuole bootstrap)
+   * 
+   */
+   document.querySelectorAll('[data-bs-toggle="tooltip"]')
+   .forEach(tooltip => {
+     new bootstrap.Tooltip(tooltip)
+   })

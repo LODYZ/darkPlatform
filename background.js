@@ -14,12 +14,24 @@ chrome.runtime.onMessage.addListener(
   async function (request, sender, sendResponse) {
     if(request.action=="openExternalJsonEditor"){ //Apertura di json editor su nuova pagina
       const tab = await chrome.tabs.create({url:chrome.runtime.getURL('website/jsonEditor.html')});
+      //Apriamo la nuova tab, aspettiamo che sia pronta e poi inviamo i dati.
+      //Sfortunatamente il caricamento degli editor è asincrono quindi anche se la tab è pronta non è detto che lo sia il listener
+      //aggiungiamo un timeout e se va in errore tentiamo di nuovo. Non è una buona soluzione lo so (potremmo gestirla inversa o usare altre API)
       await onTabLoaded(tab.id);
-      await chrome.tabs.sendMessage(tab.id, {
-        action: 'setData',
-        data: request.data,
-      });
-
+      await new Promise(r => setTimeout(r, 100));
+      try{
+        await chrome.tabs.sendMessage(tab.id, {
+          action: 'setData',
+          data: request.data,
+        });
+      }catch(e){
+        console.log('Messaggio non ricevuto, riprovo');
+        await new Promise(r => setTimeout(r, 400));
+        await chrome.tabs.sendMessage(tab.id, {
+          action: 'setData',
+          data: request.data,
+        });
+      }
     }else if(request.action=='changeExtensionIcon'){ //Cambiamo l'icona dell'estensione
       if(request.data=='light'){
         chrome.action.setIcon({ path:{
@@ -63,6 +75,7 @@ chrome.runtime.onMessage.addListener(
     'platBot': result.platBot ? result.platBot : true,
     'editorTema': result.editorTema ? result.editorTema : "aceTomorrowNight",
     'fontSizeEditor': result.fontSizeEditor ? result.fontSizeEditor : "12",
+    'macroCommentoBloccoEditor':  result.macroCommentoBloccoEditor ? result.macroCommentoBloccoEditor : false,
     'notificheAbilitate': result.notificheAbilitate ? result.notificheAbilitate : true,
     'notificheGiorniReminder': result.notificheGiorniReminder ? result.notificheGiorniReminder : "7",
     "firstKeyJsonEditor": result.firstKeyJsonEditor ? result.firstKeyJsonEditor : JSON.stringify({

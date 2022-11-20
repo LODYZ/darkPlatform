@@ -903,7 +903,7 @@ chrome.storage.sync.get(['notificheAbilitate', 'notificheGiorniReminder' ], (res
 		chrome.storage.local.get(['lastUpdateCheck', 'lastNotifiedVersion', 'dateVersionDetected'], async (resultLocal) => {
 			if(resultLocal.lastUpdateCheck){ //Mi dice quando è stato fatto l'ultimo controllo
 				console.log(diff_hours(new Date(resultLocal.lastUpdateCheck), new Date()));
-				if(diff_hours(new Date(resultLocal.lastUpdateCheck), new Date())>=6){ //Controlliamo se ci sono aggiornamenti ogni 6 ore
+				if(diff_hours(new Date(resultLocal.lastUpdateCheck), new Date())>=24){ //Controlliamo se ci sono aggiornamenti ogni 24 ore
 					//E'da almeno 6 ore che non cerco aggiornamenti, lo faccio
 					var versioneAttiva=chrome.runtime.getManifest().version;
 					//versioneAttiva=versioneAttiva.replace('2','1'); //Togliere
