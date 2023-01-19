@@ -171,7 +171,7 @@ resetButton.addEventListener( 'click',  () => {
 } );
 
 //Gestione presione bottone clona traduzioni
-clonaTraduzioni.addEventListener( 'click',  () => {
+/*clonaTraduzioni.addEventListener( 'click',  () => {
 	var testoDaClonare=document.getElementById('traduzione').value;
 	// console.log(testoDaClonare);
 
@@ -184,7 +184,7 @@ clonaTraduzioni.addEventListener( 'click',  () => {
 	// 	  });
 	// });
 	alert('Non ancora implementato :/');
-} );
+} );*/
 
 
 
@@ -192,8 +192,17 @@ clonaTraduzioni.addEventListener( 'click',  () => {
 document.getElementById('jsonAccordion').addEventListener( 'click',  () => {
 	chrome.tabs.create({url:chrome.runtime.getURL('website/jsonEditor.html')});
 } );
+//Gestione presione bottone Selenium Delayer
+document.getElementById('seleniumAccordion').addEventListener( 'click',  () => {
+	chrome.tabs.create({url:chrome.runtime.getURL('website/seleniumDelayer.html')});
+} );
 
 //Gestione presione bottone Impostazioni
+document.getElementById('impostazioniAccordion').addEventListener( 'click',  () => {
+	chrome.tabs.create({url:chrome.runtime.getURL('website/settings.html')});
+} );
+
+//Gestione presione bottone Impostazioni da designer non rilevato
 document.getElementById('impostazioni').addEventListener( 'click',  () => {
 	chrome.tabs.create({url:chrome.runtime.getURL('website/settings.html')});
 } );

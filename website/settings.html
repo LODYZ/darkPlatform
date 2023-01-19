@@ -42,6 +42,7 @@
           <ul class="nav col-12 col-lg-auto mb-1 justify-content-center mb-md-0">
             <li><a href="#" class="nav-link p-0 px-2 text-white"><i class=" bi d-block text-center bi-house-door" style="font-size: 1.5rem;"></i>Home</a></li>
             <li><a href="./jsonEditor.html" class="nav-link p-0 px-2 text-white"><i class=" bi d-block text-center bi-braces" style="font-size: 1.5rem;"></i>JSON Editor</a></li>
+            <li><a href="./seleniumDelayer.html" class="nav-link p-0 px-2 text-white"><i class=" bi d-block text-center bi-braces" style="font-size: 1.5rem;"></i>Selenium Delayer</a></li>
             <li><a href="./guida.html" class="nav-link p-0 px-2 text-white"><i class=" bi d-block text-center bi-question-circle" style="font-size: 1.5rem;"></i>Guida</a></li>
             <li><a href="#" class="nav-link p-0 px-2 text-secondary"><i class=" bi d-block text-center bi-gear" style="font-size: 1.5rem;"></i>Impostazioni</a></li>
             <!--
@@ -97,6 +98,12 @@
                         <path d="M2.114 8.063V7.9c1.005-.102 1.497-.615 1.497-1.6V4.503c0-1.094.39-1.538 1.354-1.538h.273V2h-.376C3.25 2 2.49 2.759 2.49 4.352v1.524c0 1.094-.376 1.456-1.49 1.456v1.299c1.114 0 1.49.362 1.49 1.456v1.524c0 1.593.759 2.352 2.372 2.352h.376v-.964h-.273c-.964 0-1.354-.444-1.354-1.538V9.663c0-.984-.492-1.497-1.497-1.6zM13.886 7.9v.163c-1.005.103-1.497.616-1.497 1.6v1.798c0 1.094-.39 1.538-1.354 1.538h-.273v.964h.376c1.613 0 2.372-.759 2.372-2.352v-1.524c0-1.094.376-1.456 1.49-1.456V7.332c-1.114 0-1.49-.362-1.49-1.456V4.352C13.51 2.759 12.75 2 11.138 2h-.376v.964h.273c.964 0 1.354.444 1.354 1.538V6.3c0 .984.492 1.497 1.497 1.6z"/>
                       </svg>JSON Editor
                     </a>
+                    <a href="#favIconChanger" data-toggle="tab" class="nav-item nav-link has-icon nav-link-faded" data-bs-toggle="pill" data-bs-target="#favIconChanger">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-braces me-2" viewBox="0 0 16 16">
+                        <path d="M8 0a.5.5 0 0 1 .473.337L9.046 2H14a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1h-1.85l1.323 3.837a.5.5 0 1 1-.946.326L11.092 11H8.5v3a.5.5 0 0 1-1 0v-3H4.908l-1.435 4.163a.5.5 0 1 1-.946-.326L3.85 11H2a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h4.954L7.527.337A.5.5 0 0 1 8 0zM2 3v7h12V3H2z"/>
+                      </svg>
+                      </svg>Fav Icon Changer
+                    </a>
                     <a href="#notification" data-toggle="tab" class="nav-item nav-link has-icon nav-link-faded" data-bs-toggle="pill" data-bs-target="#notification">
                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bell me-2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>Notifiche
                     </a>
@@ -126,56 +133,17 @@
                       </svg></a>
                     </li>
                     <li class="nav-item">
+                      <a href="#favIconChanger" data-toggle="tab" class="nav-link has-icon"  data-bs-toggle="tab" data-bs-target="#favIconChanger"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-braces me-2" viewBox="0 0 16 16">
+                        <path d="M8 0a.5.5 0 0 1 .473.337L9.046 2H14a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1h-1.85l1.323 3.837a.5.5 0 1 1-.946.326L11.092 11H8.5v3a.5.5 0 0 1-1 0v-3H4.908l-1.435 4.163a.5.5 0 1 1-.946-.326L3.85 11H2a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h4.954L7.527.337A.5.5 0 0 1 8 0zM2 3v7h12V3H2z"/>
+                      </svg></a>
+                    </li>
+                    <li class="nav-item">
                       <a href="#notification" data-toggle="tab" class="nav-link has-icon"  data-bs-toggle="tab" data-bs-target="#notification"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bell"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg></a>
                     </li>
                   </ul>
                 </div>
                 <div class="card-body tab-content">
-                  <div class="tab-pane" id="profile">
-                    <h6>YOUR PROFILE INFORMATION</h6>
-                    <hr>
-                    <form>
-                      <div class="form-group">
-                        <label for="fullName">Full Name</label>
-                        <input type="text" class="form-control" id="fullName" aria-describedby="fullNameHelp" placeholder="Enter your fullname" value="Kenneth Valdez">
-                        <small id="fullNameHelp" class="form-text text-muted">Your name may appear around here where you are mentioned. You can change or remove it at any time.</small>
-                      </div>
-                      <div class="form-group">
-                        <label for="bio">Your Bio</label>
-                        <textarea class="form-control autosize" id="bio" placeholder="Write something about you" style="overflow: hidden; overflow-wrap: break-word; resize: none; height: 62px;">A front-end developer that focus more on user interface design, a web interface wizard, a connector of awesomeness.</textarea>
-                      </div>
-                      <div class="form-group">
-                        <label for="url">URL</label>
-                        <input type="text" class="form-control" id="url" placeholder="Enter your website address" value="http://benije.ke/pozzivkij">
-                      </div>
-                      <div class="form-group">
-                        <label for="location">Location</label>
-                        <input type="text" class="form-control" id="location" placeholder="Enter your location" value="Bay Area, San Francisco, CA">
-                      </div>
-                      <div class="form-group small text-muted">
-                        All of the fields on this page are optional and can be deleted at any time, and by filling them out, you're giving us consent to share this data wherever your user profile appears.
-                      </div>
-                      <button type="button" class="btn btn-primary">Update Profile</button>
-                      <button type="reset" class="btn btn-light">Reset Changes</button>
-                    </form>
-                  </div>
-                  <div class="tab-pane" id="account">
-                    <h6>ACCOUNT SETTINGS</h6>
-                    <hr>
-                    <form>
-                      <div class="form-group">
-                        <label for="username">Username</label>
-                        <input type="text" class="form-control" id="username" aria-describedby="usernameHelp" placeholder="Enter your username" value="kennethvaldez">
-                        <small id="usernameHelp" class="form-text text-muted">After changing your username, your old username becomes available for anyone else to claim.</small>
-                      </div>
-                      <hr>
-                      <div class="form-group">
-                        <label class="d-block text-danger">Delete Account</label>
-                        <p class="text-muted font-size-sm">Once you delete your account, there is no going back. Please be certain.</p>
-                      </div>
-                      <button class="btn btn-danger" type="button">Delete Account</button>
-                    </form>
-                  </div>
+                  <!--################## JSON EDITOR SETTINGS ########################## -->
                   <div class="tab-pane" id="jsonEditor">
                     <div class="row">
                       <div class="col-10">
@@ -207,6 +175,7 @@
                       </div>
                     </form>
                   </div>
+                  <!--################## NOTIFICHE SETTINGS ########################## -->
                   <div class="tab-pane" id="notification">
                     <div class="row">
                       <div class="col-10">
@@ -241,6 +210,7 @@
                       <button class="btn btn-primary mt-2" type="button" id="notificheSettingsBtnBottom">Applica</button>
                     </form>
                   </div>
+                  <!--################## DARK MODE SETTINGS ########################## -->
                   <div class="tab-pane active" id="darkMode">
                     <div class="row">
                       <div class="col-10">
@@ -311,7 +281,68 @@
                       <button class="btn btn-info mt-2" type="button" id="esportaCSSBtnBottom">Esporta CSS</button>
                     </form>
                   </div>
+                  <!--################## FAV ICON CHANGER ########################## -->
+                  <div class="tab-pane" id="favIconChanger">
+                    <div class="row">
+                      <div class="col-10">
+                        <h6>FAV ICON CHANGER</h6>
+                        <div class="small text-muted">Personalizza l'icona dei siti web</div>
+                      </div>
+                      <div class="col d-flex align-items-start justify-content-end">
+                        <button class="btn btn-primary" type="button" id="favIconChangerBtnTop">Applica</button>
+                      </div>
+                    </div>
+                    <hr>
+                    <form>
+                      <div class="form-group mb-0">
+                        <ul class="list-group list-group-sm">
+                          <li class="list-group-item has-icon">
+                            <div>
+                              <h6 class="mb-0" >Pattern</h6>
+                              <input type="text" class="form-control mb-1" placeholder="Es. /4ws/index_designer.jsp?" aria-label="Pattern" pattern>
+                              <h6 class="mb-0" >Icona</h6>
+                              <input type="text" class="form-control mb-1" placeholder="URL o BASE64" aria-label="Icon" icon>
+                            </div>
+                          </li>
+                          <li class="list-group-item has-icon">
+                            <div>
+                              <h6 class="mb-0" >Pattern</h6>
+                              <input type="text" class="form-control mb-1" placeholder="Es. /4ws/index_designer.jsp?" aria-label="Pattern" pattern>
+                              <h6 class="mb-0" >Icona</h6>
+                              <input type="text" class="form-control mb-1" placeholder="URL o BASE64" aria-label="Icon" icon>
+                            </div>
+                          </li>
+                          <li class="list-group-item has-icon">
+                            <div>
+                              <h6 class="mb-0" >Pattern</h6>
+                              <input type="text" class="form-control mb-1" placeholder="Es. /4ws/index_designer.jsp?" aria-label="Pattern" pattern>
+                              <h6 class="mb-0" >Icona</h6>
+                              <input type="text" class="form-control mb-1" placeholder="URL o BASE64" aria-label="Icon" icon>
+                            </div>
+                          </li>
+                          <li class="list-group-item has-icon">
+                            <div>
+                              <h6 class="mb-0" >Pattern</h6>
+                              <input type="text" class="form-control mb-1" placeholder="Es. /4ws/index_designer.jsp?" aria-label="Pattern" pattern>
+                              <h6 class="mb-0" >Icona</h6>
+                              <input type="text" class="form-control mb-1" placeholder="URL o BASE64" aria-label="Icon" icon>
+                            </div>
+                          </li>
+                          <li class="list-group-item has-icon">
+                            <div>
+                              <h6 class="mb-0" >Pattern</h6>
+                              <input type="text" class="form-control mb-1" placeholder="Es. /4ws/index_designer.jsp?" aria-label="Pattern" pattern>
+                              <h6 class="mb-0" >Icona</h6>
+                              <input type="text" class="form-control mb-1" placeholder="URL o BASE64" aria-label="Icon" icon>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                      <button class="btn btn-primary mt-2" type="button" id="favIconChangerBtnBottom">Applica</button>
+                    </form>
+                  </div>
                 </div>
+
               </div>
             </div>
           </div>

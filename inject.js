@@ -961,3 +961,33 @@ chrome.storage.sync.get(['notificheAbilitate', 'notificheGiorniReminder' ], (res
 
 
 
+
+
+  /**
+   * FavIconChanger
+   * Si occupa di impostare la favico specificata dall'utente per il determinato url
+   */
+
+  function changeFavIcon(img){
+		var link = document.querySelector("link[rel~='icon']");
+		if (!link) {
+			link = document.createElement('link');
+			link.rel = 'icon';
+			document.getElementsByTagName('head')[0].appendChild(link);
+		}
+		link.href = href=img;
+  }
+
+   chrome.storage.local.get(null, function(result) { 
+    if(result.favIconChanger){ //Gestione caricamento link e immagini dentro input box funzionalita favicon changer
+        var data=JSON.parse(result.favIconChanger);
+
+        for(var i=0; i<data.patterns.length; i++){
+			if(document.URL.includes(data.patterns[i]) && (data.patterns[i]!='') ){ //Il sito web è tra quelli a cui ho cambiato la favIcon. Imposto l'immagine
+				changeFavIcon(data.icons[i])
+				break;
+			}
+        }
+
+    }
+  });

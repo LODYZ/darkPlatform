@@ -40,7 +40,19 @@ chrome.storage.sync.get(null, (result) => {
 
 });
 
+//Recupero tutti i settings presenti nella memoria local
+chrome.storage.local.get(null, function(result) { 
+    if(result.favIconChanger){ //Gestione caricamento link e immagini dentro input box funzionalita favicon changer
+        var data=JSON.parse(result.favIconChanger);
 
+        for(var i=0; i<data.patterns.length; i++){
+            Array.from(document.querySelectorAll('[pattern]'))[i].value=data.patterns[i];
+            Array.from(document.querySelectorAll('[icon]'))[i].value=data.icons[i];
+
+        }
+
+    }
+  });
 
 /**
  * Carico l'editor
@@ -192,6 +204,29 @@ secondKeyJsonEditor.addEventListener('click', getKeyModal);
 
 // -----------------------------------------
 
+
+
+// -------------- Sezione favicon changer settings -------
+
+//Gestione bottone salvataggio css personalizzato
+const favIconChangerBtnTop = document.getElementById('favIconChangerBtnTop');
+if (favIconChangerBtnTop) {
+    favIconChangerBtnTop.addEventListener('click', () => {
+        saveSettings('favIconChanger');
+  })
+}
+const favIconChangerBtnBottom = document.getElementById('favIconChangerBtnBottom');
+if (favIconChangerBtnBottom) {
+    favIconChangerBtnBottom.addEventListener('click', () => {
+        saveSettings('favIconChanger');
+  })
+}
+
+
+// ---------------------------------------------------
+
+
+
 const saveSettings= function(section, data){
     try{
         var msg='Impostazioni salvate con successo!';
@@ -216,6 +251,20 @@ const saveSettings= function(section, data){
             }, function() {});
         }else if(section=='jsonEditorKey'){
             chrome.storage.sync.set(data, function() {});
+            msg+=' Per rendere effettive le modifiche ricarica la pagina/designer'
+        }else if(section=='favIconChanger'){
+            var data={
+                patterns: Array.from(document.querySelectorAll('[pattern]')).map(el =>el.value),
+                icons: Array.from(document.querySelectorAll('[icon]')).map(el =>el.value),
+
+            };
+            data=JSON.stringify(data);
+
+            var toSave={
+                'favIconChanger':data
+            };
+
+            chrome.storage.local.set(toSave, function() {});
             msg+=' Per rendere effettive le modifiche ricarica la pagina/designer'
         }
 
