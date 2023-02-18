@@ -5,6 +5,7 @@ const hints=document.getElementById('hints');
 const editorTema=document.getElementById('temaEditor');
 const fontSizeEditor=document.getElementById('fontSizeEditor');
 const macroCommentoBloccoEditor=document.getElementById('macroCommentoBloccoEditor');
+const aceBeautifier=document.getElementById('aceBeautifier');
 //Input sezione notifiche
 const notificheAbilitate=document.getElementById('notificheAbilitate');
 const notificheGiorniReminder=document.getElementById('notificheGiorniReminder');
@@ -28,6 +29,10 @@ chrome.storage.sync.get(null, (result) => {
 
      if(result.macroCommentoBloccoEditor != undefined) { //Imposto la preferenza per macroCommentoBloccoEditor
         macroCommentoBloccoEditor.checked=result.macroCommentoBloccoEditor;
+     }
+
+     if(result.aceBeautifier != undefined) { //Imposto la preferenza per aceBeautifier
+        aceBeautifier.checked=result.aceBeautifier;
      }
 
      //Sezione notifiche
@@ -240,7 +245,8 @@ const saveSettings= function(section, data){
                 'platBot': platBot.checked,
                 'editorTema': editorTema.value,
                 'fontSizeEditor': fontSizeEditor.value,
-                'macroCommentoBloccoEditor':macroCommentoBloccoEditor.checked
+                'macroCommentoBloccoEditor':macroCommentoBloccoEditor.checked,
+                'aceBeautifier':aceBeautifier.checked
             }, function() {});
             msg+=' Per rendere effettive le modifiche disattiva e riattiva la dark mode'
         }else if(section=='notification'){

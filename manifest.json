@@ -31,7 +31,16 @@
 		{
 			"matches": ["<all_urls>","<all_urls>"],
 			"js": ["inject.js","macro.js"]
-		}
+		}, {
+			"js": ["isolatedStartScript.js"],
+			"matches": ["*://*/*/*/main_designer*"],
+			"run_at": "document_start"
+		  }
+		, {
+			"world": "MAIN",
+			"js": ["worldContentScript.js"],
+			"matches": ["*://*/*/*/main_designer*"]
+		  }
 	],
 	"background": {
 		"service_worker": "background.js"

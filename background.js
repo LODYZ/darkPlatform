@@ -76,6 +76,7 @@ chrome.runtime.onMessage.addListener(
     'editorTema': result.editorTema ? result.editorTema : "aceTomorrowNight",
     'fontSizeEditor': result.fontSizeEditor ? result.fontSizeEditor : "12",
     'macroCommentoBloccoEditor':  result.macroCommentoBloccoEditor ? result.macroCommentoBloccoEditor : false,
+    'aceBeautifier':  result.aceBeautifier ? result.aceBeautifier : false,
     'notificheAbilitate': result.notificheAbilitate ? result.notificheAbilitate : true,
     'notificheGiorniReminder': result.notificheGiorniReminder ? result.notificheGiorniReminder : "7",
     "firstKeyJsonEditor": result.firstKeyJsonEditor ? result.firstKeyJsonEditor : JSON.stringify({
@@ -121,3 +122,28 @@ chrome.notifications.onClicked.addListener(
     }
 }
 )
+
+
+
+// async function check(){
+//   console.log(await chrome.scripting.getRegisteredContentScripts(
+//     ));
+// }
+
+// //Prova inject content script world
+
+// //Se ho abilitato la macro, allora faccio l'injection
+// console.log('carico worldContentScript')
+// chrome.storage.sync.get(['aceBeautifier'], function(result) {
+//   if(result && result.aceBeautifier){
+//     chrome.scripting.registerContentScripts([{
+//       world: 'MAIN',
+//       id:'injectbeautify',
+//       js:["worldContentScript.js"],
+//       runAt: 'document_end',
+//       matches:['https://*/*']
+//     }], ()=>{"Content scripts registered 0 !"});
+//     console.log('prova2');
+//     check();
+//   }
+// });

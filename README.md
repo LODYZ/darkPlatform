@@ -3,6 +3,13 @@
 <!-- BEGIN LATEST DOWNLOAD BUTTON -->
 [![Download zip](https://custom-icon-badges.herokuapp.com/badge/-Download-blue?style=for-the-badge&logo=download&logoColor=white "Download zip")](https://github.com/LODYZ/darkPlatform/archive/refs/heads/main.zip)
 
+## V1.1.6
+1. **Migliorato Selenium Delayer**
+    > Modificata la logica di inserimento pause.
+2. **Ace Editor beautifier**
+    > Codice sempre mal formattato? Nessun problema, è stata aggiunta la macro ⌘+⇧+8 tramite la quale è possibile formattare blocchi di codice all'interno di AceEditor (Attivabile da impostazioni - dark mode platform).
+
+
 ## V1.1.5
 1. **Fav Icon changer**
     > Troppi designer aperti? da oggi è possibile personalizzare l'icona di ogni ambiente!
