@@ -48,6 +48,5 @@
 	"host_permissions": [
         "https://raw.githubusercontent.com/LODYZ/darkPlatform/*",
 		"https://cdn3.emoji.gg/*"
-    ],
-	"devtools_page":"prova.html"
+    ]
 }
