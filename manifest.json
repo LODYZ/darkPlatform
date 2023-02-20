@@ -1,7 +1,7 @@
 {
 	"name": "Dark platform",
 	"description": "Un'estensione che rende platform un po' diverso",
-	"version": "1.1.6",
+	"version": "1.1.7",
 	"manifest_version": 3,
 	"icons": {
 		"48": "/assets/icons/48.png",
@@ -23,7 +23,7 @@
 	},
 	"web_accessible_resources": [
 		{
-		  "resources": [ "customCSS.css", "/aceCss/*", "/jsonEditor/vanilla-jsoneditor/*", "/jwerty/*","/assets/images/*"],
+		  "resources": [ "customCSS.css", "/aceCss/*", "/jsonEditor/vanilla-jsoneditor/*", "/jwerty/*","/assets/images/*","modules/*"],
 		  "matches": ["*://*.google.com/*", "*://*/*" ]
 		}
 	],
@@ -48,5 +48,6 @@
 	"host_permissions": [
         "https://raw.githubusercontent.com/LODYZ/darkPlatform/*",
 		"https://cdn3.emoji.gg/*"
-    ]
+    ],
+	"devtools_page":"prova.html"
 }

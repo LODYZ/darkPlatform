@@ -122,28 +122,3 @@ chrome.notifications.onClicked.addListener(
     }
 }
 )
-
-
-
-// async function check(){
-//   console.log(await chrome.scripting.getRegisteredContentScripts(
-//     ));
-// }
-
-// //Prova inject content script world
-
-// //Se ho abilitato la macro, allora faccio l'injection
-// console.log('carico worldContentScript')
-// chrome.storage.sync.get(['aceBeautifier'], function(result) {
-//   if(result && result.aceBeautifier){
-//     chrome.scripting.registerContentScripts([{
-//       world: 'MAIN',
-//       id:'injectbeautify',
-//       js:["worldContentScript.js"],
-//       runAt: 'document_end',
-//       matches:['https://*/*']
-//     }], ()=>{"Content scripts registered 0 !"});
-//     console.log('prova2');
-//     check();
-//   }
-// });

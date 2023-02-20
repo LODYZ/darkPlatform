@@ -3,12 +3,15 @@
 <!-- BEGIN LATEST DOWNLOAD BUTTON -->
 [![Download zip](https://custom-icon-badges.herokuapp.com/badge/-Download-blue?style=for-the-badge&logo=download&logoColor=white "Download zip")](https://github.com/LODYZ/darkPlatform/archive/refs/heads/main.zip)
 
+## V1.1.7
+1. **Ace Editor beautifier**
+    > FIX - La precedente realese presentava dei problemi nell'iniettare gli script necessari per il beautify del codice. La funzionalità rimane comunque in BETA in quanto deve interagire con il DOM dell'applicazione e non in ambiente isolato (da utilizzare consapevolmente).
+
 ## V1.1.6
 1. **Migliorato Selenium Delayer**
     > Modificata la logica di inserimento pause.
 2. **Ace Editor beautifier**
     > Codice sempre mal formattato? Nessun problema, è stata aggiunta la macro ⌘+⇧+8 tramite la quale è possibile formattare blocchi di codice all'interno di AceEditor (Attivabile da impostazioni - dark mode platform).
-
 
 ## V1.1.5
 1. **Fav Icon changer**

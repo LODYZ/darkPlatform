@@ -13,7 +13,7 @@ async function loadModule(path) {
 if(document.URL.includes('main_designer.jsp')){
     chrome.storage.sync.get(['macroCommentoBloccoEditor'], function(result) {
         if(result && result.macroCommentoBloccoEditor){
-            loadModule('jwerty/jwerty.js').then(
+            loadModule('modules/jwerty.js').then(
                 function(moduleLoaded){
                     console.log('Inserisco la macro');
                     //Inserisco la macro
