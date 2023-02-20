@@ -5,7 +5,7 @@
 
 ## V1.1.7
 1. **Ace Editor beautifier**
-    > FIX - La precedente realese presentava dei problemi nell'iniettare gli script necessari per il beautify del codice. La funzionalità rimane comunque in BETA in quanto deve interagire con il DOM dell'applicazione e non in ambiente isolato (da utilizzare consapevolmente).
+    > FIX - La precedente release presentava dei problemi nell'iniettare gli script necessari per il beautify del codice. La funzionalità rimane comunque in BETA in quanto deve interagire con il DOM dell'applicazione e non in ambiente isolato (da utilizzare consapevolmente).
 
 ## V1.1.6
 1. **Migliorato Selenium Delayer**
