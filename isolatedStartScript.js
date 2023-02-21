@@ -12,6 +12,21 @@ if(document.URL.includes('main_designer.jsp')){
                 //carichiamo subito lo script
                 injectCode(chrome.runtime.getURL('modules/jwerty.js'));
                 injectCode(chrome.runtime.getURL('modules/beautify.js'));
+                injectCode(chrome.runtime.getURL('worldContentScript.js'));
+
+                //TODO
+                //  Con chrome > 111
+                //   togliere worldContentScript da qui. 
+                //   Modificare manifest. rimuovendo lo script dalle risorse accessibili
+                //   aggiungere lo script come content script come segue 
+                //   		, {
+                //         "world": "MAIN",
+                //         "js": ["worldContentScript.js"],
+                //         "matches": ["*://*/*/*/main_designer*"]
+                //     }
+                //Se non funziona più la possibilità di inject per i primi due script fare la stessa cosa per loro
+                //Sfortunatamente questo implica iniettare sempre il codice  anche se l utente non ha abilitato la macro
+
             }
         }
     });
@@ -32,7 +47,7 @@ function injectCode(src) {
     script.src = src;
     script.onload = function() {
         console.log("script injected");
-        this.remove();
+        //this.remove();
     };
 
     // This script runs before the <head> element is created,

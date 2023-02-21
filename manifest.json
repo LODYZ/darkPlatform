@@ -23,7 +23,7 @@
 	},
 	"web_accessible_resources": [
 		{
-		  "resources": [ "customCSS.css", "/aceCss/*", "/jsonEditor/vanilla-jsoneditor/*", "/jwerty/*","/assets/images/*","modules/*"],
+		  "resources": [ "customCSS.css", "/aceCss/*", "/jsonEditor/vanilla-jsoneditor/*", "/jwerty/*","/assets/images/*","modules/*","worldContentScript.js"],
 		  "matches": ["*://*.google.com/*", "*://*/*" ]
 		}
 	],
@@ -36,11 +36,7 @@
 			"matches": ["*://*/*/*/main_designer*"],
 			"run_at": "document_start"
 		  }
-		, {
-			"world": "MAIN",
-			"js": ["worldContentScript.js"],
-			"matches": ["*://*/*/*/main_designer*"]
-		  }
+
 	],
 	"background": {
 		"service_worker": "background.js"
