@@ -90,7 +90,8 @@ chrome.runtime.onMessage.addListener(
         "keyCode": 81,
         "which": 81,
         "code": "KeyQ"
-    })
+    }),
+    'gaeSync': result.gaeSync ? result.gaeSync : true,
     
 }, function() {});
 
@@ -122,3 +123,29 @@ chrome.notifications.onClicked.addListener(
     }
 }
 )
+
+
+//Verifico le chiamate http che vengono effettuate al fine di capire se l'utente ha allineato o meno le azioni gae
+chrome.storage.sync.get(['gaeSync'], (result) => {
+  if(result.gaeSync){
+    chrome.webRequest.onBeforeRequest.addListener(
+      function(details) {
+        if (details.method=='PUT' && details.url.includes('getActions/detail?') && new URLSearchParams(details.url).get('actionId')) {
+          chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
+            chrome.tabs.sendMessage(details.tabId, { action: "updateGaeStatus", status:'NOT_SYNC', actionId: new URLSearchParams(details.url).get('actionId') });
+          });
+        }else if(details.method=='GET' && details.url.includes('executeJs/syncAction?') && new URLSearchParams(details.url).get('actionId') ){
+          chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
+            chrome.tabs.sendMessage(details.tabId, { action: "updateGaeStatus", status:'SYNC', actionId: new URLSearchParams(details.url).get('actionId') });
+          });
+        }
+      },
+      { urls: ["*://*/*/getActions/detail?*","*://*/*/executeJs/syncAction?*"] },
+      []
+    );
+  }
+});
+
+
+
+

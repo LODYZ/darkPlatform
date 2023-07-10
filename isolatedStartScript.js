@@ -54,3 +54,48 @@ function injectCode(src) {
     // so we add the script to <html> instead.
     nullthrows(document.head || document.documentElement).appendChild(script);
 }
+
+
+
+/**
+ * Gestione stato allineamento azioni GAE
+ */
+chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+    let updateGaeStatusSync=function(){
+        let validDetails=[];
+        document.getElementsByName('pk.actionId').forEach(el => el.value==request.actionId ? validDetails.push(el) : null);
+        
+        //Verifico se l'azione che è stata salvata è di tipo GAE o meno
+        if(validDetails.length>0 && validDetails[0].parentElement.querySelector('[name="actionType"]').value=='Javascript GAE'){
+            let actionTypeDivs=validDetails.map(idInput => idInput.parentElement.querySelector('[name="actionType"]').parentElement);
+
+            var divElement=document.createElement('div');
+            divElement.setAttribute('name','actionGaeStatus-'+request.actionId);
+            divElement.classList.add(request.status=='NOT_SYNC' ? 'gae-sync-not-aligned' : 'gae-sync-aligned');
+            divElement.innerText=request.status=='NOT_SYNC' ? 'NON ALLINEATO' : 'ALLINEATO';
+
+            //Rimuovo eventuali vecchi elementi
+            document.getElementsByName('actionGaeStatus-'+request.actionId).forEach(el=>el.remove());
+
+            //Inserisco i nuovi aggiornati
+            actionTypeDivs.forEach(function(el){
+                if(!el.classList.contains('gae-sync-opacity')){ //Sistemo opacity degli elementi padre
+                    el.classList.add('gae-sync-opacity');
+                }
+                el.appendChild(divElement);
+            } )
+
+        }
+
+    }
+
+
+    if (request.action === "updateGaeStatus") {
+        debugger;
+        updateGaeStatusSync()
+
+    }
+
+    sendResponse({});
+    return true;
+  });

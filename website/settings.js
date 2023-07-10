@@ -2,6 +2,7 @@
 //Input sezione dark mode
 const platBot=document.getElementById('platBot');
 const hints=document.getElementById('hints');
+const gaeSync=document.getElementById('gaeSync');
 const editorTema=document.getElementById('temaEditor');
 const fontSizeEditor=document.getElementById('fontSizeEditor');
 const macroCommentoBloccoEditor=document.getElementById('macroCommentoBloccoEditor');
@@ -19,6 +20,9 @@ chrome.storage.sync.get(null, (result) => {
      }
      if(result.hints != undefined) { //Imposto la preferenza per hint
         hints.checked=result.hints;
+     }
+     if(result.gaeSync != undefined) { //Imposto la preferenza per gaeSync
+        gaeSync.checked=result.gaeSync;
      }
      if(result.fontSizeEditor != undefined) { //Imposto la preferenza per la dimensione del font
         fontSizeEditor.value=result.fontSizeEditor;
@@ -246,7 +250,8 @@ const saveSettings= function(section, data){
                 'editorTema': editorTema.value,
                 'fontSizeEditor': fontSizeEditor.value,
                 'macroCommentoBloccoEditor':macroCommentoBloccoEditor.checked,
-                'aceBeautifier':aceBeautifier.checked
+                'aceBeautifier':aceBeautifier.checked,
+                'gaeSync': gaeSync.checked,
             }, function() {});
             msg+=' Per rendere effettive le modifiche disattiva e riattiva la dark mode'
         }else if(section=='notification'){
