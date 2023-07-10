@@ -3,6 +3,18 @@
 <!-- BEGIN LATEST DOWNLOAD BUTTON -->
 [![Download zip](https://custom-icon-badges.herokuapp.com/badge/-Download-blue?style=for-the-badge&logo=download&logoColor=white "Download zip")](https://github.com/LODYZ/darkPlatform/archive/refs/heads/main.zip)
 
+## V1.1.8
+1.  **Ace Editor beautifier**
+    > FIX - La precedente release presentava dei problemi nell'iniettare gli script necessari per il beautify del codice.
+2.  **Aggiornate dipendenze**
+    > Aggiornate le dipendenze e alleggerita la dimensione dell'estensione
+3.  **Javascript GAE sync status**
+    > Funzionalità che consente di ricordare all'utente se ha allineato l'azione dopo il salvataggio (disattivabile in impostazioni)
+4.  **Finestra pop-up darkMode**
+    > Convertita finestra pop-up con tema dark
+5.  **JSONEditor in DevTools**
+    > Adesso sarà possibile sfruttare JSONEditor direttamente dagli strumenti sviluppatore di chrome!
+
 ## V1.1.7
 1. **Ace Editor beautifier**
     > FIX - La precedente release presentava dei problemi nell'iniettare gli script necessari per il beautify del codice. La funzionalità rimane comunque in BETA in quanto deve interagire con il DOM dell'applicazione e non in ambiente isolato (da utilizzare consapevolmente).
