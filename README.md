@@ -8,7 +8,8 @@
     > FIX - La precedente release presentava dei problemi nell mantenere il service worker attivo al fine che potesse intercettare lo stato di not sync. E' stata inoltre cambiata la posizione dell'icona (vista la nuova aggiunta di checkbox)
 2.  **dpToVS - versione alpha**
     > Stanco di dover sempre fare copia e incolla delle azioni per lavorare in VS code? Tramite la macro ⌘+⇧+9 sarà possibile inviare e ricevere azioni fra VS e Ace editor
-
+3.  **Gesture "swipe to go back"**
+    > Stanco di rischiare di uscire dal designer quando utilizzi il trackpad? Adesso è possibile disattivare la gesture swipe to go back di google chrome solamente nel designer!
 ## V1.1.8
 1.  **Ace Editor beautifier**
     > FIX - La precedente release presentava dei problemi nell'iniettare gli script necessari per il beautify del codice.
