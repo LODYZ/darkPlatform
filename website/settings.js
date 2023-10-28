@@ -46,6 +46,14 @@ chrome.storage.sync.get(null, (result) => {
         disableSwipeToGoBack.checked=result.disableSwipeToGoBack;
      }
 
+     if(result.dpToVS != undefined) { //Imposto la preferenza per dpToVS
+        dpToVS.checked=result.dpToVS;
+     }
+
+     if(result.vsToDpPort != undefined) { //Imposto la preferenza per vsToDpPort
+        vsToDpPort.value=result.vsToDpPort;
+     }
+
      //Sezione notifiche
      if(result.notificheAbilitate != undefined) {
         notificheAbilitate.checked=result.notificheAbilitate;
@@ -260,7 +268,7 @@ const saveSettings= function(section, data){
                 'aceBeautifier':aceBeautifier.checked,
                 'gaeSync': gaeSync.checked,
                 'disableSwipeToGoBack': disableSwipeToGoBack.checked,
-                'dpToVS': disableSwipeToGoBack.checked,
+                'dpToVS': dpToVS.checked,
                 'vsToDpPort': vsToDpPort.value,
             }, function() {});
             msg+=' Per rendere effettive le modifiche disattiva e riattiva la dark mode o la pagina/designer'

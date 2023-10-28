@@ -31,7 +31,7 @@ if (document.URL.includes('main_designer.jsp')) {
             })(); //Funzione auto chiamante che aspetta due secondi prima definire la macro (per esser sicuri di aver caricato jwerty)
         }
 
-        if (darkPlatformVariables.dpToVs) {
+        if (darkPlatformVariables.dpToVS) {
             //Se Platform to VS è attivo
             (async () => {
                 await delay(2000);
