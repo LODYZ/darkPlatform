@@ -46,7 +46,7 @@ fetch(chrome.runtime.getURL("./assets/css/dark-platform.css")).then(function(res
 }
 
 
-/*Creazioen degli elementi html */
+/*Creazione degli elementi html */
 if(document.getElementById('jsonEditorDarkMode')==null){
 	var css=chrome.runtime.getURL("./jsonEditor/vanilla-jsoneditor/themes/jse-theme-dark.css");
 	
