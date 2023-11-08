@@ -3,10 +3,13 @@
 const platBot=document.getElementById('platBot');
 const hints=document.getElementById('hints');
 const gaeSync=document.getElementById('gaeSync');
+const disableSwipeToGoBack=document.getElementById('disableSwipeToGoBack');
 const editorTema=document.getElementById('temaEditor');
 const fontSizeEditor=document.getElementById('fontSizeEditor');
 const macroCommentoBloccoEditor=document.getElementById('macroCommentoBloccoEditor');
 const aceBeautifier=document.getElementById('aceBeautifier');
+const dpToVS=document.getElementById('dpToVS');
+const vsToDpPort = document.getElementById('vsToDpPort');
 //Input sezione notifiche
 const notificheAbilitate=document.getElementById('notificheAbilitate');
 const notificheGiorniReminder=document.getElementById('notificheGiorniReminder');
@@ -37,6 +40,18 @@ chrome.storage.sync.get(null, (result) => {
 
      if(result.aceBeautifier != undefined) { //Imposto la preferenza per aceBeautifier
         aceBeautifier.checked=result.aceBeautifier;
+     }
+
+     if(result.disableSwipeToGoBack != undefined) { //Imposto la preferenza per swipe to go back
+        disableSwipeToGoBack.checked=result.disableSwipeToGoBack;
+     }
+
+     if(result.dpToVS != undefined) { //Imposto la preferenza per dpToVS
+        dpToVS.checked=result.dpToVS;
+     }
+
+     if(result.vsToDpPort != undefined) { //Imposto la preferenza per vsToDpPort
+        vsToDpPort.value=result.vsToDpPort;
      }
 
      //Sezione notifiche
@@ -252,8 +267,11 @@ const saveSettings= function(section, data){
                 'macroCommentoBloccoEditor':macroCommentoBloccoEditor.checked,
                 'aceBeautifier':aceBeautifier.checked,
                 'gaeSync': gaeSync.checked,
+                'disableSwipeToGoBack': disableSwipeToGoBack.checked,
+                'dpToVS': dpToVS.checked,
+                'vsToDpPort': vsToDpPort.value,
             }, function() {});
-            msg+=' Per rendere effettive le modifiche disattiva e riattiva la dark mode'
+            msg+=' Per rendere effettive le modifiche disattiva e riattiva la dark mode o la pagina/designer'
         }else if(section=='notification'){
             chrome.storage.sync.set(
                 {

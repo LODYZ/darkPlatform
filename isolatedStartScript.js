@@ -3,11 +3,11 @@
 /*
 *Recupero le informazioni relative alle macro abilitate dall utente e le salvo nel localStorage della pagina
 */
-if(document.URL.includes('main_designer.jsp')){
-    chrome.storage.sync.get(['aceBeautifier'], function(result) {
-        if(result && result.aceBeautifier!=null){
-            localStorage.darkPlatformVariables=JSON.stringify(result);
-            if(result.aceBeautifier){
+if (document.URL.includes('main_designer.jsp')) {
+    chrome.storage.sync.get(['aceBeautifier', 'dpToVS', 'vsToDpPort'], function (result) {
+        if (result && result.aceBeautifier != null) {
+            localStorage.darkPlatformVariables = JSON.stringify(result);
+            if (result.aceBeautifier) {
                 //Dato che sappiamo che l'utente vuole usare la macro
                 //carichiamo subito lo script
                 injectCode(chrome.runtime.getURL('modules/jwerty.js'));
@@ -27,6 +27,8 @@ if(document.URL.includes('main_designer.jsp')){
                 //Se non funziona più la possibilità di inject per i primi due script fare la stessa cosa per loro
                 //Sfortunatamente questo implica iniettare sempre il codice  anche se l utente non ha abilitato la macro
 
+            } else if (result.dpToVS) {
+                injectCode(chrome.runtime.getURL('worldContentScript.js'));
             }
         }
     });
@@ -45,7 +47,7 @@ function injectCode(src) {
     const script = document.createElement('script');
     // This is why it works!
     script.src = src;
-    script.onload = function() {
+    script.onload = function () {
         console.log("script injected");
         //this.remove();
     };
@@ -60,30 +62,34 @@ function injectCode(src) {
 /**
  * Gestione stato allineamento azioni GAE
  */
-chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
-    let updateGaeStatusSync=function(){
-        let validDetails=[];
-        document.getElementsByName('pk.actionId').forEach(el => el.value==request.actionId ? validDetails.push(el) : null);
-        
-        //Verifico se l'azione che è stata salvata è di tipo GAE o meno
-        if(validDetails.length>0 && validDetails[0].parentElement.querySelector('[name="actionType"]').value=='Javascript GAE'){
-            let actionTypeDivs=validDetails.map(idInput => idInput.parentElement.querySelector('[name="actionType"]').parentElement);
+chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
+    let updateGaeStatusSync = function () {
+        let validDetails = [];
+        document.getElementsByName('pk.actionId').forEach(el => el.value == request.actionId ? validDetails.push(el) : null);
 
-            var divElement=document.createElement('div');
-            divElement.setAttribute('name','actionGaeStatus-'+request.actionId);
-            divElement.classList.add(request.status=='NOT_SYNC' ? 'gae-sync-not-aligned' : 'gae-sync-aligned');
-            divElement.innerText=request.status=='NOT_SYNC' ? 'NON ALLINEATO' : 'ALLINEATO';
+        //Verifico se l'azione che è stata salvata è di tipo GAE o meno
+        if (validDetails.length > 0 && validDetails[0].parentElement.querySelector('[name="actionType"]').value == 'Javascript GAE') {
+            let actionTypeDivs = validDetails.map(idInput => idInput.closest('.x-plain.x-plain-noborder').querySelector('.x-toolbar-left-row'));
+
+            const tdElement = document.createElement('td');
+            tdElement.setAttribute('name', 'actionGaeStatus-' + request.actionId);
+            var divElement = document.createElement('div');
+            divElement.classList.add(request.status == 'NOT_SYNC' ? 'gae-sync-not-aligned' : 'gae-sync-aligned');
+            divElement.innerText = request.status == 'NOT_SYNC' ? 'NON ALLINEATO' : 'ALLINEATO';
+
+            tdElement.appendChild(divElement);
+
 
             //Rimuovo eventuali vecchi elementi
-            document.getElementsByName('actionGaeStatus-'+request.actionId).forEach(el=>el.remove());
+            document.getElementsByName('actionGaeStatus-' + request.actionId).forEach(el => el.remove());
 
             //Inserisco i nuovi aggiornati
-            actionTypeDivs.forEach(function(el){
-                if(!el.classList.contains('gae-sync-opacity')){ //Sistemo opacity degli elementi padre
+            actionTypeDivs.forEach(function (el) {
+                if (!el.classList.contains('gae-sync-opacity')) { //Sistemo opacity degli elementi padre
                     el.classList.add('gae-sync-opacity');
                 }
-                el.appendChild(divElement);
-            } )
+                el.appendChild(tdElement);
+            })
 
         }
 
@@ -91,11 +97,10 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 
 
     if (request.action === "updateGaeStatus") {
-        debugger;
         updateGaeStatusSync()
 
     }
 
     sendResponse({});
     return true;
-  });
+});
