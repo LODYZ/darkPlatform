@@ -72,16 +72,17 @@ chrome.runtime.onMessage.addListener(
  */
 
 chrome.storage.sync.get(null, (result) => {
+  debugger;
   //console.log(JSON.stringify(result));
   chrome.storage.sync.set(
     {
-      'hints': result.hints ? result.hints : true,
-      'platBot': result.platBot ? result.platBot : true,
+      'hints': (result.hints === true || result.hints === false ) ? result.hints : true,
+      'platBot': ( result.platBot === true || result.platBot === false ) ? result.platBot : true,
       'editorTema': result.editorTema ? result.editorTema : "aceTomorrowNight",
       'fontSizeEditor': result.fontSizeEditor ? result.fontSizeEditor : "12",
       'macroCommentoBloccoEditor': result.macroCommentoBloccoEditor ? result.macroCommentoBloccoEditor : false,
       'aceBeautifier': result.aceBeautifier ? result.aceBeautifier : false,
-      'notificheAbilitate': result.notificheAbilitate ? result.notificheAbilitate : true,
+      'notificheAbilitate': (result.notificheAbilitate === true || result.notificheAbilitate === false) ? result.notificheAbilitate : true,
       'notificheGiorniReminder': result.notificheGiorniReminder ? result.notificheGiorniReminder : "7",
       "firstKeyJsonEditor": result.firstKeyJsonEditor ? result.firstKeyJsonEditor : JSON.stringify({
         "key": "Control",
@@ -95,10 +96,10 @@ chrome.storage.sync.get(null, (result) => {
         "which": 81,
         "code": "KeyQ"
       }),
-      'gaeSync': result.gaeSync ? result.gaeSync : true,
-      'disableSwipeToGoBack': result.disableSwipeToGoBack ? result.disableSwipeToGoBack : true,
-      'dpToVS': result.dpToVS ? result.dpToVS : false,
-      'dpToVS': result.vsToDpPort ? result.vsToDpPort : 3005,
+      'gaeSync': (result.gaeSync === true || result.hints === false ) ? result.gaeSync : true,
+      'disableSwipeToGoBack': (result.disableSwipeToGoBack === true || result.disableSwipeToGoBack === false) ? result.disableSwipeToGoBack : true,
+      'dpToVS': (result.dpToVS === true || result.dpToVS === false) ? result.dpToVS : false,
+      'vsToDpPort': result.vsToDpPort ? result.vsToDpPort : 3005,
     }, function () { });
 
 });

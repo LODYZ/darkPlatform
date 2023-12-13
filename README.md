@@ -3,6 +3,10 @@
 <!-- BEGIN LATEST DOWNLOAD BUTTON -->
 [![Download zip](https://custom-icon-badges.herokuapp.com/badge/-Download-blue?style=for-the-badge&logo=download&logoColor=white "Download zip")](https://github.com/LODYZ/darkPlatform/archive/refs/heads/main.zip)
 
+## V1.2.0
+1.  **Impostazioni darkPlatform**
+    > FIX - Alcune impostazioni non venivano salvate correttamente causando il ripristino del valore di default. Sistemato. E' consigliato ri-verificare quali funzionalità si vogliono avere attive e quali no
+
 ## V1.1.9
 1.  **Javascript GAE sync status**
     > FIX - La precedente release presentava dei problemi nell mantenere il service worker attivo al fine che potesse intercettare lo stato di not sync. E' stata inoltre cambiata la posizione dell'icona (vista la nuova aggiunta di checkbox)
